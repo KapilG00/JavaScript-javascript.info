@@ -1,0 +1,137 @@
+// Map.
+
+// 1.
+let map1 = new Map();
+
+// map with primitive keys.
+map1.set('1', 'string');   
+map1.set(1, 'number');
+map1.set(1.414, 'float'); 
+map1.set(true, 'boolean');
+map1.set(null, "null");
+map1.set(undefined, "undefined");
+map1.set(NaN, "nan");
+
+// map with non-primitive keys.
+let arr = [1,2,3,4];
+map1.set(arr, "array");
+let obj = {name: "kapil", age: 27};
+map1.set(obj, "object");
+let func = () => console.log("function as a key");
+map1.set(func, "function");
+
+console.log(map1);
+
+console.log(map1.get(null));
+console.log(map1.get(undefined));
+console.log(map1.get(NaN));
+
+console.log(map1.get(arr));
+console.log(map1.get(obj));
+console.log(map1.get(func));
+
+console.log(map1.size);
+
+// 2.
+let recipeMap = new Map([
+    ['cucumber', 500],
+    ['tomatoes', 350],
+    ['onion', 50]
+]);
+console.log(recipeMap);
+
+// iterate over keys (vegetables).
+console.log(recipeMap.keys());
+for (let vegetable of recipeMap.keys()) {
+    console.log(vegetable); // cucumber, tomatoes, onion
+}
+
+// iterate over values (amounts).
+console.log(recipeMap.values());
+for (let amount of recipeMap.values()) {
+    console.log(amount); // 500, 350, 50
+}
+
+// iterate over [key, value] entries
+for (let entry of recipeMap.entries()) { // the same as of recipeMap.
+    console.log(entry); // cucumber, 500 (and so on)
+}
+
+recipeMap.forEach( (value, key, map) => {
+    console.log(`${key}: ${value}`); // cucumber: 500 etc
+});
+
+// 3.
+let obj1 = {
+    name: "John",
+    age: 30
+};
+  
+let map2= new Map(Object.entries(obj1));
+console.log(map2);
+
+// 4. Object.fromEntries: Object from Map.
+let prices = Object.fromEntries([
+    ['banana', 1],
+    ['meat', 4],
+    ['orange', 2],
+]);
+  
+console.log(prices);
+
+// 4.1 map to object.
+let map3 = new Map();
+map3.set('banana', 11);
+map3.set('orange', 22);
+map3.set('meat', 44);
+
+let obj2 = Object.fromEntries(map3.entries());
+console.log(obj2);
+
+// Set.
+
+// 1.
+// let set = new Set([{ name: "John" }, { name: "Pete" }, { name: "Mary" }]);
+
+let set = new Set();
+
+let john = { name: "John" };
+let pete = { name: "Pete" };
+let mary = { name: "Mary" };
+
+// visits, some users come multiple times
+set.add(john);
+set.add(pete);
+set.add(mary);
+set.add(john);
+set.add(mary);
+
+console.log(set);
+
+// set keeps only unique values
+console.log(set.size); // 3
+
+for (let user of set) {
+  console.log(user.name); // John (then Pete and Mary)
+}
+
+// 2.
+let set1 = new Set([1,2,3,4,2,33,11,1,5]);
+console.log(set1);
+console.log(set1.has(11));
+
+// 3.
+let set2 = new Set([function a() {}, function b() {}, function c() {}]);
+console.log(set2);
+
+// 4. Iteration over set.
+let set3 = new Set(["oranges", "apples", "bananas"]);
+
+for (let value of set3) {
+    console.log(value);
+}
+
+// the same with forEach:
+set3.forEach((value, valueAgain, set3) => {
+  console.log(value, valueAgain);
+});
