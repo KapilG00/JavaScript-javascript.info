@@ -58,3 +58,55 @@ const counter2 = counter();
 console.log(counter2());
 console.log(counter2());
 console.log(counter2());
+
+//
+// const arr = ["asd", "asdasd", "asdasd"];
+const arr = ["user"];
+const obj1 = {};
+
+// console.log("arr:", ["ad", "qwert", "aka"].toString());
+
+obj1.user = "FE";
+obj1[arr] = "React";
+console.log("obj1:", obj1);
+console.log(obj1.user);
+
+//
+function fetch() {
+  A = 7;
+  console.log("A:", A); // 7
+}
+
+let A;
+fetch();
+
+//
+function abc() {
+  console.log("asd");
+}
+
+abc.someProperty = 322;
+console.log("abc:", abc);
+console.log("properties of abc function:", Object.keys(abc));
+
+//
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1);
+}
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1);
+}
+
+for (var i = 0; i < 3; i++) {
+  function inner(val) {
+    setTimeout(() => {
+      console.log(val);
+    }, 1);
+  }
+  inner(i);
+}
