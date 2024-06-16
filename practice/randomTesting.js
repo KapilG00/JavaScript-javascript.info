@@ -110,3 +110,43 @@ for (var i = 0; i < 3; i++) {
   }
   inner(i);
 }
+
+//
+function f1() {
+  let value = Math.random();
+
+  function g1() {
+    debugger; // in console: type -> alert(value);
+  }
+
+  return g1;
+}
+
+let g1 = f1();
+g1();
+
+//
+let phrase1 = "Hello1";
+
+if (true) {
+  let user1 = "John1";
+
+  function sayHi1() {
+    console.log(`${phrase1}, ${user1}`);
+  }
+}
+
+sayHi1();
+
+//
+let phrase2 = "Hello2";
+
+{
+  let user2 = "John2";
+
+  function sayHi2() {
+    console.log(`${phrase2}, ${user2}`); // Hello, John
+  }
+}
+
+sayHi2();
