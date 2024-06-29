@@ -1,4 +1,4 @@
-// // 1.
+// 1.
 // const url = `https://api.kanye.rest/`;
 // fetch(url) // level 0
 //   .then((response) => {
@@ -18,7 +18,7 @@
 //     return undefined;
 //   });
 
-// // 2.
+// 2.
 // const url = `https://api.kanye.rest ads/`;
 // fetch(url) // level 0
 //   .then((response) => {
@@ -40,9 +40,9 @@
 //   .catch((error) => {
 //     // level 4
 //     console.log("level 4 error:", error);
-//   })
+//   });
 
-// // 3.
+// 3.
 // const url = `https://api.kanye.rest asd/`;
 // fetch(url) // level 0
 //   .then((response) => {
@@ -68,7 +68,7 @@
 //   .catch((error) => {
 //     // level 5
 //     console.log("level 5 error:", error);
-//   })
+//   });
 
 // // 4.
 // const url = `https://api.kanye.rest adsa/`;
@@ -112,10 +112,10 @@
 //     const data = response.json();
 //     return data;
 //   })
-// //   .catch((error) => {
-// //     // level 3
-// //     console.log("level 3 error:", error);
-// //   })
+//   //   .catch((error) => {
+//   //     // level 3
+//   //     console.log("level 3 error:", error);
+//   //   })
 //   .then((data) => {
 //     // level 2
 //     console.log("level 2:", data);
@@ -129,7 +129,7 @@
 //   .catch((error) => {
 //     // level 4
 //     console.log("level 4 error:", error);
-//   }); 
+//   });
 
 // // 6.
 // const url = `https://api.kanye.rest asd/`;
@@ -153,7 +153,7 @@
 //     // level 4
 //     console.log("level 4 error:", error);
 //     return 4;
-//   }); 
+//   });
 
 // // 7.
 // const url = `https://api.kanye.rest/`;
@@ -232,7 +232,7 @@
 //   .catch((error) => {
 //     // level 2
 //     console.log("level 2 error:", error);
-//     throw new Error("level 2 raised an error!!")
+//     throw new Error("level 2 raised an error!!");
 //     // return 2;
 //   })
 //   .catch((error) => {
@@ -256,54 +256,90 @@
 //   });
 
 // 10.
-let url = `https://api.kanye.rest/`;
+// let url = `https://api.kanye.rest/`;
+// fetch(url) // level 0
+//   .then((response) => {
+//     // level 1
+//     console.log("level 1:", response);
+//     data = response.json();
+//     throw new Error("error raised by level 1!!");
+//     // return data;
+//   })
+//   .catch((error) => {
+//     // level 2
+//     console.log("level 2 error:", error);
+//     throw new Error("level 2 raised an error!!");
+//     // return 2;
+//   })
+//   .catch((error) => {
+//     // level 3
+//     console.log("level 3 error:", error);
+//     return 3;
+//   })
+//   .catch((error) => {
+//     // level 4
+//     console.log("level 4 error:", error);
+//     return 4;
+//   })
+//   .then((response) => {
+//     // level 5
+//     console.log("level 5:", response);
+//     return 123;
+//   })
+//   .finally((val) => {
+//     // level 6
+//     console.log("finally block!!:", val);
+//   });
+
+// Error handlers in THEN block.
+
+// 11.
+const url = `https://api.kanye.rest zzzz/`;
+
 fetch(url) // level 0
-  .then((response) => {
-    // level 1
-    console.log("level 1:", response);
-    data = response.json();
-    throw new Error("error raised by level 1!!");
-    // return data;
-  })
+  .then(
+    (response) => {
+      // level 1
+      console.log("level 1");
+      const data = response.json();
+      return data;
+    },
+    (error) => {
+      console.log("level 1 error ", error);
+      return 109;
+    }
+  )
   .catch((error) => {
     // level 2
-    console.log("level 2 error:", error);
-    throw new Error("level 2 raised an error!!");
-    // return 2;
+    console.log("level 2 error", error);
   })
-  .catch((error) => {
+  .then((data) => {
     // level 3
-    console.log("level 3 error:", error);
-    return 3;
+    console.log("level 3", data);
+    return 100;
+  })
+  .then((data) => {
+    // level 4
+    console.log("level 4", data);
   })
   .catch((error) => {
-    // level 4
-    console.log("level 4 error:", error);
-    return 4;
-  })
-  .then((response) => {
     // level 5
-    console.log("level 5:", response);
-    return 123;
-  })
-  .finally((val) => {
-    // level 6
-    console.log("finally block!!:", val);
+    console.log("level 5 error", error);
   });
 
-//  
+//
 function asyncOperation() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve("asd");
-        }, 1000);
-    });
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("asd");
+    }, 4000);
+  });
 }
 
 asyncOperation()
-    .then(result => {
-        console.log(result);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
